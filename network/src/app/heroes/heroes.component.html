@@ -1,0 +1,35 @@
+<div 
+     *ngIf = "selectedHero">
+    <h2 class="hero-headers">Change {{selectedHero.name | uppercase}} Details</h2>
+    <!-- <div><span>id: {{selectedHero.id}}</span></div>
+    <div><span>name: {{selectedHero.name}}</span></div>
+     -->
+     <div>
+        <ul class="heroes">
+            <li>
+                <span class="badge">{{selectedHero.id}}</span>{{selectedHero.name}}
+            </li>
+        </ul>
+     </div>
+     <h2>Data Binding</h2>
+    <div>
+        <label>Name:
+            <input [(ngModel)]="selectedHero.name" placeholder="name">
+        </label>
+    </div>
+</div>
+<h2 class = "hero-headers">All Clan Heroes</h2>
+<!-- <div>
+    <ul {{ngFor hero in Heroes}}>
+        <li>{{heroes.id}} : {{heros.name}}</li>
+
+    </ul>
+</div> -->
+
+<ul class="heroes">
+    <li *ngFor = "let hero of heroes"
+                  [class.selected] ="hero === selectedHero"  
+                 (click) = "onSelect(hero)">
+        <span class= "badge">{{hero.id}} : </span> {{hero.name}}
+    </li>
+</ul>
